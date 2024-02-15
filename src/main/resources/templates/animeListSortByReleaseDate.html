@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime List - Sorted by Release Date</title>
+</head>
+<body>
+	
+<a href="/animes/animelist">
+    <button>Load Anime List</button>
+</a>
+	
+<!-- Button to show anime sorted by rating -->
+<form th:action="@{/animes/sortByRating}" method="get">
+    <button type="submit">Sort by Rating</button>
+</form>
+
+<!-- Button to show anime sorted by release date -->
+<form th:action="@{/animes/sortByReleaseDate}" method="get">
+    <button type="submit">Sort by Release Date</button>
+</form>
+
+<!-- Button to show user details -->
+<form th:action="@{/user/login}" method="get">
+    <button type="submit">User Details</button>
+</form>
+
+<h1>Anime List - Sorted by Release Date</h1>
+<div>
+    <h2>All Anime Sorted by Release Date</h2>
+    <div th:each="anime : ${animes}">
+        <a th:href="@{'/animes/details/' + ${anime.id}}">
+            <img th:src="${anime.cover}" th:alt="${anime.name}">
+        </a>
+        <p>Clicks: <span th:text="${anime.clicks}"></span></p>
+        <p>Average Rating: <span th:text="${anime.averageRating}"></span></p>
+        <p>Release Date: <span th:text="${anime.releaseDate}"></span></p>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<form id="commentTable" action="/management" method="post">
+		<table>
+			<tr>
+				<th>UID</th>
+				<th>User Name</th>
+				<th>Type</th>
+				<th>Title</th>
+				<th>Content</th>
+				<th>Time</th>
+				<th>Operate</th>
+			</tr>
+			<tr th:each="comment : ${comments}">
+			    <td th:text="${comment.regularUser.id}">UID</td>
+			    <td th:text="${comment.regularUser.name}">User Name</td>
+			    <td>Type</td>
+			    <td th:text="${comment.anime.name}">Title</td>
+			    <td th:text="${comment.content}">Content</td>
+			    <td th:text="${comment.comment_time}">Time</td>
+			    <td><button>Delete</button></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
